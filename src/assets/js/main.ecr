@@ -32,6 +32,7 @@ window.onload = () => {
     if(url === "")
     {
       isURLValid = false;
+      $(".spinner").addClass("display-none");
       alert("URL cannot be empty.");
     }
     else
