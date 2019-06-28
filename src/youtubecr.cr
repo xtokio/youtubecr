@@ -36,7 +36,7 @@ module Youtubecr
     if io.to_s.includes? "100%"
       response = "Process complete"
     else
-      response = "Format not available to download"
+      response = "Format #{file_type} not available to download"
     end
     response
   end
