@@ -8,7 +8,7 @@ module Youtubecr
   # TODO: Put your code here
   get "/youtubecr" do |env|
     
-    favicon = File.new("src/assets/img/favicon.png")
+    favicon = File.new("/var/www/domains/mischicanadas/subdomains/app/youtubecr/src/assets/img/favicon.png")
     favicon_enc = Base64.encode(favicon.gets_to_end)
     # favicon_plain = Base64.decode_string(favicon_enc)
 
@@ -38,7 +38,7 @@ module Youtubecr
 
   get "/youtubecr/download/:filename" do |env|
     filename = env.params.url["filename"]
-    send_file env, "downloads/#{filename}"
+    send_file env, "/var/www/domains/mischicanadas/subdomains/app/youtubecr/downloads/#{filename}"
   end
 
 end
