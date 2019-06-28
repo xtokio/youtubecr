@@ -2,6 +2,7 @@
 window.onload = () => {
   
   $("#btn_video").on("click",function(){
+    $("#img_preview").attr("src","");
     document.querySelector("#txt_response").innerHTML = "";
     document.querySelector("#lnk_download").innerHTML = "";
     $("#lnk_download").attr("href","");
@@ -13,6 +14,7 @@ window.onload = () => {
   });
 
   $("#btn_audio").on("click",function(){
+    $("#img_preview").attr("src","");
     document.querySelector("#txt_response").innerHTML = "";
     document.querySelector("#lnk_download").innerHTML = "";
     $("#lnk_download").attr("href","");
