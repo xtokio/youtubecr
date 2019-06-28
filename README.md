@@ -1,22 +1,10 @@
-# youtubecr
+# YoutubeCR
 
-TODO: Write a description here
-
-## Installation
-
-TODO: Write installation instructions here
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
+Crystal lang web app to download Youtube videos in mp4 or mp3 format but using the command line tool youtube-dl
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/youtubecr/fork>)
+1. Fork it (<https://github.com/xtokio/youtubecr/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -24,4 +12,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [Luis Gómez](https://github.com/your-github-user) - creator and maintainer
+- [Luis Gómez](https://github.com/xtokio) - creator and maintainer
