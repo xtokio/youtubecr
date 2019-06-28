@@ -24,7 +24,7 @@ module Youtubecr
 
     command = ""
     if file_type == "mp4"
-      command = "youtube-dl -f best -o \"/var/www/domains/mischicanadas/subdomains/app/youtubecr/downloads/#{filename}.%(ext)s\" #{url}"
+      command = "youtube-dl -f 22 -o \"/var/www/domains/mischicanadas/subdomains/app/youtubecr/downloads/#{filename}.%(ext)s\" #{url}"
     end
     if file_type == "mp3"
       command = "youtube-dl --extract-audio --audio-format mp3 -o \"/var/www/domains/mischicanadas/subdomains/app/youtubecr/downloads/#{filename}.%(ext)s\" #{url}"
@@ -32,7 +32,7 @@ module Youtubecr
 
     io = IO::Memory.new 
     Process.run(command, shell: true, output: io)
-    # io.to_s
+    io.to_s
 
   end
 
