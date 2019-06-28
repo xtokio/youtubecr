@@ -24,10 +24,10 @@ module Youtubecr
 
     command = ""
     if file_type == "mp4"
-      command = "youtube-dl -f 22 -o \"downloads/#{filename}.%(ext)s\" #{url}"
+      command = "youtube-dl -f 22 -o \"/var/www/domains/mischicanadas/subdomains/app/youtubecr/downloads/#{filename}.%(ext)s\" #{url}"
     end
     if file_type == "mp3"
-      command = "youtube-dl --extract-audio --audio-format mp3 -o \"downloads/#{filename}.%(ext)s\" #{url}"
+      command = "youtube-dl --extract-audio --audio-format mp3 -o \"/var/www/domains/mischicanadas/subdomains/app/youtubecr/downloads/#{filename}.%(ext)s\" #{url}"
     end
 
     io = IO::Memory.new 
