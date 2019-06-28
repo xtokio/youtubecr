@@ -32,13 +32,13 @@ module Youtubecr
 
     io = IO::Memory.new 
     Process.run(command, shell: true, output: io)
-    response = ""
+    response = {"status" => "", "message" => ""}
     if io.to_s.includes? "100%"
-      response = "Process complete"
+      response = {"status" => "OK", "message" => "Process complete"}
     else
-      response = "Format #{file_type} not available to download"
+      response = {"status" => "ERROR", "message" => "Format #{file_type} not available to download"}
     end
-    response
+    response.to_json
   end
 
   get "/youtubecr/download/:filename" do |env|

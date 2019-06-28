@@ -56,11 +56,14 @@ window.onload = () => {
               'Content-Type': 'application/json'
             }
           })
-          .then(res => res.text())
+          .then(res => res.json())
           .then(response => {
-            document.querySelector("#txt_response").innerHTML = response;
-            document.querySelector("#lnk_download").innerHTML = "Download file";
-            $("#lnk_download").attr("href","/youtubecr/download/"+filename+"."+file_type);
+            document.querySelector("#txt_response").innerHTML = response.message;
+            if(response.status == "OK")
+            {
+              document.querySelector("#lnk_download").innerHTML = "Download file";
+              $("#lnk_download").attr("href","/youtubecr/download/"+filename+"."+file_type);
+            }
 
             $(".spinner").addClass("display-none");
           })
