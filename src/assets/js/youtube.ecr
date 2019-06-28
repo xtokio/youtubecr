@@ -1,0 +1,43 @@
+<script>
+var Youtube = (function () {
+    'use strict';
+
+    var video, results;
+    var youtube_regex = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+
+    var getValid = function(url){        
+        return (url.match(youtube_regex)) ? RegExp.$1 : false;
+    };
+
+    var getThumb = function (url, size) {
+        if (url === null) {
+            return '';
+        }
+        size    = (size === null) ? 'big' : size;
+        
+        results = url.match('[\\?&]v=([^&#]*)');
+        video   = (results === null) ? url : results[1];
+
+        if (url.match(youtube_regex) && url.match(youtube_regex)[2].length == 11)
+        {
+            results = url.match(youtube_regex)[2];
+            video = results;
+        }
+        
+        if (size === 'small') {
+            return 'http://img.youtube.com/vi/' + video + '/2.jpg';
+        }
+        return 'http://img.youtube.com/vi/' + video + '/0.jpg';
+    };
+
+    var getInfo = function(url){
+      return fetch('https://noembed.com/embed?url='+url);
+    };
+
+    return {
+        thumb: getThumb,
+        isValid: getValid,
+        info: getInfo
+    };
+}());
+</script>

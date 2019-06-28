@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>YoutubeCR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= render "src/assets/css/normalize.ecr" %>
+    <%= render "src/assets/css/skeleton.ecr" %>
+    <%= render "src/assets/css/style.ecr" %>
+    <link rel="icon" type="image/png" href="data:image/png;base64,<%= favicon_enc %>">
+  </head>
+  
+  <body>
+    <div class="container">
+      <%= content %>
+    </div>
+    
+    <%= render "src/assets/js/domelement.ecr" %>
+    <%= render "src/assets/js/youtube.ecr" %>
+    <%= render "src/assets/js/main.ecr" %>
+  </body>
+</html>

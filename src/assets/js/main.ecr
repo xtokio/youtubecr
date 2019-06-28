@@ -1,0 +1,86 @@
+<script>
+window.onload = () => {
+  
+  $("#btn_video").on("click",function(){
+    document.querySelector("#txt_response").innerHTML = "";
+    document.querySelector("#lnk_download").innerHTML = "";
+    $("#lnk_download").attr("href","");
+
+    let file_type = "mp4";
+    let url = $("#txt_url").val();
+    isValid(url,file_type);
+    
+  });
+
+  $("#btn_audio").on("click",function(){
+    document.querySelector("#txt_response").innerHTML = "";
+    document.querySelector("#lnk_download").innerHTML = "";
+    $("#lnk_download").attr("href","");
+
+    let file_type = "mp3";
+    let url = $("#txt_url").val();
+    isValid(url,file_type);
+
+  });
+
+  async function isValid(url,file_type)
+  {
+    $(".spinner").removeClass("display-none");
+
+    let isURLValid = false;
+
+    if(url === "")
+    {
+      isURLValid = false;
+      alert("URL cannot be empty.");
+    }
+    else
+    {
+      let isURLValid = Youtube.isValid(url);
+      if(isURLValid)
+      {
+        let thumb = Youtube.thumb(url,'big');
+        $("#img_preview").attr("src",thumb);
+
+        let info = await Youtube.info(url);
+        let data = await info.json();
+        if(data.error == undefined)
+        {
+          let filename = data.title.replace(/[^a-zA-Z0-9]/g,'_').replace(/_{2,}/g,'_');
+
+          let data_download = {file_type,filename,url};
+          fetch('/youtubecr/download', {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data_download), // data can be `string` or {object}!
+            headers:{
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(res => res.text())
+          .then(response => {
+            document.querySelector("#txt_response").innerHTML = response;
+            document.querySelector("#lnk_download").innerHTML = "Download file";
+            $("#lnk_download").attr("href","/youtubecr/download/"+filename+"."+file_type);
+
+            $(".spinner").addClass("display-none");
+          })
+          .catch(error => console.error('Error:', error));
+          
+          isURLValid = true;
+        }
+        else
+        {
+          $(".spinner").addClass("display-none");
+          isURLValid = false;
+          alert('Youtube error: '+data.error);
+        }
+      }
+      else
+        alert("Youtube link is not valid.");
+    }
+    
+    return isURLValid;
+  }
+
+};
+</script>

@@ -1,0 +1,17 @@
+name: youtubecr
+version: 0.1.0
+
+authors:
+  - Luis Gómez <xtokio@gmail.com>
+
+targets:
+  youtubecr:
+    main: src/youtubecr.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+    
+crystal: 0.29.0
+
+license: MIT
